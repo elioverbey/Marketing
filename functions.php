@@ -22,17 +22,18 @@ function beautiful_enqueue_scripts_styles() {
 
 	wp_enqueue_script( 'beautiful-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,500', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,500|Oswald:400,300,700', array(), CHILD_THEME_VERSION );
 
 }
+
 
 //* Add support for custom header
 add_theme_support( 'custom-header', array(
 	'default-text-color'     => '000000',
 	'header-selector'        => '.site-title a',
 	'header-text'            => false,
-	'height'                 => 120,
-	'width'                  => 320,
+	'height'                 => 38,
+	'width'                  => 178,
 ) );
 
 //* Add support for custom background
@@ -88,7 +89,7 @@ function beautiful_custom_body_class( $classes ) {
 }
 
 //* Hook before header widget area above header
-add_action( 'genesis_before_header', 'beautiful_before_header' );
+add_action( 'genesis_after_header', 'beautiful_before_header', 11 );
 function beautiful_before_header() {
 
 	genesis_widget_area( 'before-header', array(
@@ -109,8 +110,22 @@ function beautiful_site_header_banner() {
 
 }
 
+//* Hook before header widget area above header
+add_action( 'genesis_after_content', 'beeautiful_before_header', 11 );
+function beeautiful_before_header() {
+	
+	if ( ! is_front_page() || get_query_var( 'paged' ) >= 2 )
+		return;
+	
+	genesis_widget_area( 'featured', array(
+		'before' => '<div class="featured" class="widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	) );
+
+}
+
 //* Hook welcome message widget area before content
-add_action( 'genesis_after_header', 'beautiful_welcome_message' );
+add_action( 'genesis_before_loop', 'beautiful_welcome_message' );
 function beautiful_welcome_message() {
 
 	if ( ! is_front_page() || get_query_var( 'paged' ) >= 2 )
@@ -233,6 +248,11 @@ genesis_register_sidebar( array(
 	'description' => __( 'This is the before header widget area.', 'beautiful' ),
 ) );
 genesis_register_sidebar( array(
+	'id'          => 'featured',
+	'name'        => __( 'featured', 'beautiful' ),
+	'description' => __( 'This is the before header widget area.', 'beautiful' ),
+) );
+genesis_register_sidebar( array(
 	'id'          => 'welcome-message',
 	'name'        => __( 'Welcome Message', 'beautiful' ),
 	'description' => __( 'This is the welcome message widget area.', 'beautiful' ),
@@ -257,3 +277,14 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Bottom Sidebar', 'beautiful' ),
 	'description' => __( 'This is the bottom sidebar widget area.', 'beautiful' ),
 ) );
+
+
+//* Register widget areas
+add_action( 'genesis_before_loop', 'dc_yank_em_out' );
+function dc_yank_em_out() {
+   if ( is_home() ) {
+      remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+      remove_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
+   }
+}
+
