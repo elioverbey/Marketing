@@ -17,4 +17,4 @@ Split Sidebar Right - This is the right split sidebar widget area.
 Bottom Sidebar - This is the bottom sidebar widget area.
 
 SUPPORT
-Please visit http://elioverbe.net for more information
+Please visit http://elioverbey.net for more information
