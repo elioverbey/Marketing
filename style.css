@@ -842,6 +842,7 @@ Before Header
 .before-header {
 	line-height: 1;
 	text-align: center;
+	background-color: #efefef;
 }
 
 .before-header .wrap {
@@ -857,6 +858,18 @@ Before Header
 	margin-bottom: 0;
 }
 
+.before-header input {
+	width: 50%;
+}
+
+.before-header h4 {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	color: #C54B33;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
 
 /*
 Site Header
@@ -867,7 +880,7 @@ Site Header
 }
 
 .site-header .wrap {
-	padding: 40px 0;
+	padding: 5.5px 0;
 }
 
 .beautiful .site-header-banner {
@@ -880,7 +893,7 @@ Site Header
 .title-area {
 	float: left;
 	padding-top: 10px;
-	width: 320px;
+	width: 178px;
 }
 
 .site-title {
@@ -893,7 +906,7 @@ Site Header
 
 .site-title a,
 .site-title a:hover {
-	color: #333;
+	color: #000;
 }
 
 .site-description {
@@ -911,12 +924,12 @@ Site Header
 /* Logo, hide text */
 
 .header-image .site-header .wrap {
-	padding: 20px 0;
+	padding: 5.5px 0;
 }
 
 .header-image .site-title a {
 	float: left;
-	min-height: 120px;
+	min-height: 38px;
 	width: 100%;
 }
 
@@ -962,10 +975,11 @@ Site Navigation
 }
 
 .genesis-nav-menu a {
-	color: #666;
+	color: #fff;
+	font-family: 'oswald', sans-serif;
 	display: block;
+	font-weight: 400;
 	font-size: 16px;
-	letter-spacing: 4px;
 	padding: 20px;
 	position: relative;
 }
@@ -973,7 +987,7 @@ Site Navigation
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current-menu-item > a,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-	color: #e5554e;
+	color: #fff;
 }
 
 .genesis-nav-menu .sub-menu .current-menu-item > a {
@@ -1079,7 +1093,7 @@ Site Navigation
 }
 
 #responsive-menu-icon::before {
-	color: #333;
+	color: #fff;
 	content: "\f333";
 	font: normal 24px/1 'dashicons';
 	margin: 0 auto;
@@ -1547,6 +1561,26 @@ Media Queries
 	.two-thirds {
 		margin: 0;
 		width: 100%;
+	}
+
+}
+
+
+@media only screen and (max-width: 568px) {
+
+	.genesis-nav-menu .menu-item {
+		border-top: 1px solid #212020;
+		display: block;
+		padding: 0px 0;
+		text-align: center;
+	}
+	
+	.genesis-nav-menu a {
+		padding: 17px;
+	}
+	
+	.nav-primary .genesis-nav-menu .menu-item:last-child {
+		margin-bottom: 0px;
 	}
 
 }
