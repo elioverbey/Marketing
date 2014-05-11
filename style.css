@@ -862,6 +862,10 @@ Before Header
 Site Header
 ---------------------------------------------------------------------------------------------------- */
 
+.site-header {
+	background: #C54B33;
+}
+
 .site-header .wrap {
 	padding: 40px 0;
 }
